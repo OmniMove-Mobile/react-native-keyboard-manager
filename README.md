@@ -6,6 +6,8 @@ With Android moving to edge-to-edge by default, similar “keyboard covering inp
 
 For this reason, this project is now in maintenance mode: bug fixes and small PRs are welcome, but no new features are planned.
 
+**Thank you for all the partnership and collaboration over these 9 years of this project’s journey, it truly made a difference.**
+
 Recommended alternatives:
 - KeyboardAvoidingView (React Native)
 - An edge-to-edge approach with react-native-keyboard-controller (cross-platform): https://github.com/kirillzyusko/react-native-keyboard-controller
