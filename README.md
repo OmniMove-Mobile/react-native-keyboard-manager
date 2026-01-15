@@ -1,3 +1,17 @@
+# ⚠️ DEPRECATION NOTICE ⚠️
+
+This library was created to address iOS-only keyboard issues (e.g., the keyboard covering inputs) by integrating **IQKeyboardManager**.
+
+With Android moving to edge-to-edge by default, similar “keyboard covering inputs” problems can now happen on Android as well. Because of that, maintaining a library that only targets iOS no longer makes sense.
+
+For this reason, this project is now in maintenance mode: bug fixes and small PRs are welcome, but no new features are planned.
+
+Recommended alternatives:
+- KeyboardAvoidingView (React Native)
+- An edge-to-edge approach with react-native-keyboard-controller (cross-platform): https://github.com/kirillzyusko/react-native-keyboard-controller
+
+---
+
 # React-Native Keyboard Manager
 
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/douglasjunior/react-native-keyboard-manager/blob/master/LICENSE)
