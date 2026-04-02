@@ -9,10 +9,15 @@ For this reason, this project is now in maintenance mode: bug fixes and small PR
 **Thank you for all the partnership and collaboration over these 9 years of this project’s journey, it truly made a difference.**
 
 Recommended alternatives:
+
 - KeyboardAvoidingView (React Native)
 - An edge-to-edge approach with react-native-keyboard-controller (cross-platform): https://github.com/kirillzyusko/react-native-keyboard-controller
 
 ---
+
+## Fork note
+
+This fork removes the strict `IQKeyboardManagerSwift` version pin, allowing the consuming app to control the iOS pod source and revision via the Podfile.
 
 # React-Native Keyboard Manager
 
@@ -26,13 +31,13 @@ This is only for iOS, Android no needed. For Android just add `android:windowSof
 
 ## Screenshots
 
-| Enabled | Disabled |
-| - | - |
+| Enabled                                                                                                                                                                                                                                                             | Disabled                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | <img src='https://raw.githubusercontent.com/douglasjunior/react-native-keyboard-manager/master/screenshots/01.png' width='240' /> <img src='https://raw.githubusercontent.com/douglasjunior/react-native-keyboard-manager/master/screenshots/02.png' width='240' /> | <img src='https://raw.githubusercontent.com/douglasjunior/react-native-keyboard-manager/master/screenshots/03.png' width='240' /> |
 
 | <img src='https://raw.githubusercontent.com/hackiftekhar/IQKeyboardManager/v3.3.0/Screenshot/IQKeyboardManager.gif' width='240' /> |
-| - |
-| _Credits: IQKeyboardManager_ |
+| ---------------------------------------------------------------------------------------------------------------------------------- |
+| _Credits: IQKeyboardManager_                                                                                                       |
 
 ## NOTES:
 
@@ -46,36 +51,38 @@ This is only for iOS, Android no needed. For Android just add `android:windowSof
 
 1. Install the JavaScript dependency:
 
-    ```sh
-    yarn add react-native-keyboard-manager
-    ```
-    Or
-    ```sh
-    npm i -S react-native-keyboard-manager
-    ```
+   ```sh
+   yarn add react-native-keyboard-manager
+   ```
+
+   Or
+
+   ```sh
+   npm i -S react-native-keyboard-manager
+   ```
 
 1. Add the CocoaPods dependency to your `ios/Podfile`:
 
-    ```ruby
-    # Add temporary IQKeyboardManagerSwift fork to solve problems with PrivacyInfo.xcprivacy
-    pod 'IQKeyboardManagerSwift', :git => 'https://github.com/douglasjunior/IQKeyboardManager.git', :branch => 'react-native-keyboard-manager'
-    ```
+   ```ruby
+   # Use the IQKeyboardManagerSwift fork configured for this project
+   pod 'IQKeyboardManagerSwift', :git => 'https://github.com/OmniMove-Mobile/IQKeyboardManager.git', :branch => 'main'
+   ```
 
-    > To automate this process on Expo you may need to create a plugin, see https://github.com/douglasjunior/react-native-keyboard-manager/issues/111#issuecomment-2153101561
+   > To automate this process on Expo you may need to create a plugin, see https://github.com/douglasjunior/react-native-keyboard-manager/issues/111#issuecomment-2153101561
 
 1. Run the CocoaPods installation:
 
-    ```sh
-    cd ios
-    pod install
-    ```
+   ```sh
+   cd ios
+   pod install
+   ```
 
 1. (optional) To force `IQKeyboardManagerSwift` update with the latest commit:
 
-    ```sh
-    cd ios
-    pod update IQKeyboardManagerSwift
-    ```
+   ```sh
+   cd ios
+   pod update IQKeyboardManagerSwift
+   ```
 
 Done! 🎉
 
@@ -86,7 +93,7 @@ Because [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) i
 1. Open `ios/YourAppName.xcworkspace` in Xcode
 1. Right-click on `YourAppName` in the `Project Navigator` on the left, and click `New File`.
 1. Create a single empty `Swift` file to the project (make sure that `YourAppName` target is selected when adding)
-1. When Xcode asks, press **Create Bridging Header** and do not remove `Swift` file then. 
+1. When Xcode asks, press **Create Bridging Header** and do not remove `Swift` file then.
 1. Re-run your build.
 
 ## Usage
@@ -96,30 +103,29 @@ It does not need any extra library setup to work, just [install](#install) and g
 But, if you need some configuration, there are some options available.
 
 ```js
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
 
 if (Platform.OS === 'ios') {
-    KeyboardManager.setEnable(true);
-    KeyboardManager.setEnableDebugging(false);
-    KeyboardManager.setKeyboardDistanceFromTextField(10);
-    KeyboardManager.setLayoutIfNeededOnUpdate(true);
-    KeyboardManager.setEnableAutoToolbar(true);
-    KeyboardManager.setToolbarDoneBarButtonItemText("Done");
-    KeyboardManager.setToolbarManageBehaviourBy("subviews"); // "subviews" | "tag" | "position"
-    KeyboardManager.setToolbarPreviousNextButtonEnable(false);
-    KeyboardManager.setToolbarTintColor('#0000FF'); // Only #000000 format is supported
-    KeyboardManager.setToolbarBarTintColor('#FFFFFF'); // Only #000000 format is supported
-    KeyboardManager.setShouldShowToolbarPlaceholder(true);
-    KeyboardManager.setOverrideKeyboardAppearance(false);
-    KeyboardManager.setKeyboardAppearance("default"); // "default" | "light" | "dark"
-    KeyboardManager.setShouldResignOnTouchOutside(true);
-    KeyboardManager.setShouldPlayInputClicks(true);
-    KeyboardManager.resignFirstResponder();
-    KeyboardManager.isKeyboardShowing()
-      .then((isShowing) => {
-          // ...
-      });
+  KeyboardManager.setEnable(true);
+  KeyboardManager.setEnableDebugging(false);
+  KeyboardManager.setKeyboardDistanceFromTextField(10);
+  KeyboardManager.setLayoutIfNeededOnUpdate(true);
+  KeyboardManager.setEnableAutoToolbar(true);
+  KeyboardManager.setToolbarDoneBarButtonItemText('Done');
+  KeyboardManager.setToolbarManageBehaviourBy('subviews'); // "subviews" | "tag" | "position"
+  KeyboardManager.setToolbarPreviousNextButtonEnable(false);
+  KeyboardManager.setToolbarTintColor('#0000FF'); // Only #000000 format is supported
+  KeyboardManager.setToolbarBarTintColor('#FFFFFF'); // Only #000000 format is supported
+  KeyboardManager.setShouldShowToolbarPlaceholder(true);
+  KeyboardManager.setOverrideKeyboardAppearance(false);
+  KeyboardManager.setKeyboardAppearance('default'); // "default" | "light" | "dark"
+  KeyboardManager.setShouldResignOnTouchOutside(true);
+  KeyboardManager.setShouldPlayInputClicks(true);
+  KeyboardManager.resignFirstResponder();
+  KeyboardManager.isKeyboardShowing().then(isShowing => {
+    // ...
+  });
 }
 ```
 
@@ -131,7 +137,7 @@ If you want to use Next/Previous buttons, enable it.
 
 ```js
 if (Platform.OS === 'ios') {
-    KeyboardManager.setToolbarPreviousNextButtonEnable(true);
+  KeyboardManager.setToolbarPreviousNextButtonEnable(true);
 }
 ```
 
@@ -160,7 +166,9 @@ class App extends Component {
 # Mock with jest
 
 ```js
-jest.mock('react-native-keyboard-manager', () => require('react-native-keyboard-manager/jest/mock'));
+jest.mock('react-native-keyboard-manager', () =>
+  require('react-native-keyboard-manager/jest/mock'),
+);
 ```
 
 # Known issues
@@ -168,7 +176,7 @@ jest.mock('react-native-keyboard-manager', () => require('react-native-keyboard-
 - If your project is managed by Expo, you will need to eject.
 - Pod install failed on M1 machines: https://github.com/douglasjunior/react-native-keyboard-manager/issues/104
 - ~~Problem with "@react-navigation/native-stack" and "IQKeyboardManager" on iOS: https://github.com/douglasjunior/react-native-keyboard-manager/issues/89~~
-    - Seems to be fixed in version `6.5.16-0`
+  - Seems to be fixed in version `6.5.16-0`
 
 ## Contribute
 
